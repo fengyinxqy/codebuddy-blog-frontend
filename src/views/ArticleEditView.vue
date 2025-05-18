@@ -61,11 +61,9 @@ const cancelEdit = () => {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'warning',
-  })
-    .then(() => {
+  }).then(() => {
       router.go(-1)
-    })
-    .catch(() => {})
+    }).catch(() => {})
 }
 
 // 模拟加载文章数据
