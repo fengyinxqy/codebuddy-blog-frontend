@@ -53,7 +53,10 @@ const getTagSize = (count: number) => {
 
     <el-row :gutter="20">
       <el-col :span="24">
-        <el-card class="tag-cloud-card" shadow="hover">
+        <el-card
+          class="tag-cloud-card"
+          shadow="hover"
+        >
           <div class="tag-cloud">
             <router-link
               v-for="tag in sortedTags"
@@ -73,7 +76,10 @@ const getTagSize = (count: number) => {
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="mt-xl">
+    <el-row
+      :gutter="20"
+      class="mt-xl"
+    >
       <el-col :md="12">
         <el-card shadow="hover">
           <template #header>
@@ -82,10 +88,21 @@ const getTagSize = (count: number) => {
             </div>
           </template>
           <div class="popular-tags">
-            <div v-for="tag in sortedTags.slice(0, 10)" :key="tag.id" class="popular-tag-item">
-              <router-link :to="`/tags/${tag.id}`" class="tag-link">
+            <div
+              v-for="tag in sortedTags.slice(0, 10)"
+              :key="tag.id"
+              class="popular-tag-item"
+            >
+              <router-link
+                :to="`/tags/${tag.id}`"
+                class="tag-link"
+              >
                 <div class="tag-info">
-                  <span class="tag-name" :style="{ color: tag.color }">{{ tag.name }}</span>
+                  <span
+                    class="tag-name"
+                    :style="{ color: tag.color }"
+                    >{{ tag.name }}</span
+                  >
                   <el-progress
                     :percentage="(tag.count / Math.max(...tags.map((t) => t.count))) * 100"
                     :color="tag.color"
@@ -116,7 +133,10 @@ const getTagSize = (count: number) => {
                 :timestamp="'2024-01-01'"
                 placement="top"
               >
-                <router-link :to="`/tags/${tag.id}`" class="recent-tag-link">
+                <router-link
+                  :to="`/tags/${tag.id}`"
+                  class="recent-tag-link"
+                >
                   <h4>{{ tag.name }}</h4>
                   <p>最近添加了 3 篇文章</p>
                 </router-link>

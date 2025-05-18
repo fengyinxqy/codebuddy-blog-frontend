@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import { Calendar, View, Star, Share, Edit } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import { ElMessage } from 'element-plus'
-import { Calendar, View, Star, Share, ThumbUp, ChatDotRound, Edit } from '@element-plus/icons-vue'
 
 const route = useRoute()
 const articleId = route.params.id
@@ -63,19 +63,29 @@ onMounted(() => {
           <div class="article-meta">
             <div class="meta-left">
               <div class="author-info">
-                <el-avatar :size="40" :src="article.author.avatar" />
+                <el-avatar
+                  :size="40"
+                  :src="article.author.avatar"
+                />
                 <span class="author-name">{{ article.author.name }}</span>
               </div>
               <div class="publish-info">
                 <el-icon><Calendar /></el-icon>
                 <span>{{ article.publishDate }}</span>
-                <el-tooltip content="最后更新时间" placement="top">
+                <el-tooltip
+                  content="最后更新时间"
+                  placement="top"
+                >
                   <span class="update-date">(更新于 {{ article.updateDate }})</span>
                 </el-tooltip>
               </div>
             </div>
             <div class="meta-right">
-              <el-tag size="small" type="info">{{ article.category.name }}</el-tag>
+              <el-tag
+                size="small"
+                type="info"
+                >{{ article.category.name }}</el-tag
+              >
               <span class="views"
                 ><el-icon><View /></el-icon> {{ article.views }}</span
               >
@@ -85,26 +95,53 @@ onMounted(() => {
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="mt-lg">
+    <el-row
+      :gutter="20"
+      class="mt-lg"
+    >
       <el-col :md="16">
-        <el-card shadow="hover" class="article-card">
+        <el-card
+          shadow="hover"
+          class="article-card"
+        >
           <div class="article-cover">
-            <el-image :src="article.cover" fit="cover" alt="文章封面" />
+            <el-image
+              :src="article.cover"
+              fit="cover"
+              alt="文章封面"
+            />
           </div>
 
-          <div class="article-content" v-html="article.content"></div>
+          <div
+            class="article-content"
+            v-html="article.content"
+          />
 
           <div class="article-tags">
-            <el-tag v-for="tag in article.tags" :key="tag.id" class="tag-item" effect="plain">
+            <el-tag
+              v-for="tag in article.tags"
+              :key="tag.id"
+              class="tag-item"
+              effect="plain"
+            >
               {{ tag.name }}
             </el-tag>
           </div>
 
           <div class="article-actions">
-            <el-button type="primary" @click="likeArticle" :icon="Star">
+            <el-button
+              type="primary"
+              @click="likeArticle"
+              :icon="Star"
+            >
               点赞 ({{ article.likes }})
             </el-button>
-            <el-button @click="shareArticle" :icon="Share"> 分享 </el-button>
+            <el-button
+              @click="shareArticle"
+              :icon="Share"
+            >
+              分享
+            </el-button>
             <el-button
               type="warning"
               @click="$router.push(`/article/edit/${article.id}`)"
@@ -116,12 +153,20 @@ onMounted(() => {
 
           <div class="article-author-card">
             <div class="author-avatar">
-              <el-avatar :size="60" :src="article.author.avatar" />
+              <el-avatar
+                :size="60"
+                :src="article.author.avatar"
+              />
             </div>
             <div class="author-info">
               <h3 class="author-name">{{ article.author.name }}</h3>
               <p class="author-bio">{{ article.author.bio }}</p>
-              <el-button type="primary" size="small" plain>关注作者</el-button>
+              <el-button
+                type="primary"
+                size="small"
+                plain
+                >关注作者</el-button
+              >
             </div>
           </div>
         </el-card>

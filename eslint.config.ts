@@ -1,9 +1,9 @@
-import { globalIgnores } from 'eslint/config'
-import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
-import pluginVue from 'eslint-plugin-vue'
-import pluginOxlint from 'eslint-plugin-oxlint'
-import pluginImport from 'eslint-plugin-import'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
+import { defineConfigWithVueTs, vueTsConfigs } from '@vue/eslint-config-typescript'
+import { globalIgnores } from 'eslint/config'
+import pluginImport from 'eslint-plugin-import'
+import pluginOxlint from 'eslint-plugin-oxlint'
+import pluginVue from 'eslint-plugin-vue'
 
 // To allow more languages other than `ts` in `.vue` files, uncomment the following lines:
 // import { configureVueProject } from '@vue/eslint-config-typescript'
@@ -30,17 +30,6 @@ export default defineConfigWithVueTs(
     rules: {
       // Vue 规则
       'vue/multi-word-component-names': 'off',
-      'vue/max-attributes-per-line': [
-        'error',
-        {
-          singleline: {
-            max: 3,
-          },
-          multiline: {
-            max: 1,
-          },
-        },
-      ],
       'vue/html-self-closing': [
         'error',
         {

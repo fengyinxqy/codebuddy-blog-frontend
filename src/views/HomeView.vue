@@ -6,7 +6,10 @@
   <div class="home-view">
     <el-row :gutter="20">
       <el-col :span="24">
-        <el-card shadow="hover" class="welcome-card">
+        <el-card
+          shadow="hover"
+          class="welcome-card"
+        >
           <template #header>
             <div class="card-header">
               <h2>欢迎来到我的博客</h2>
@@ -16,7 +19,11 @@
             <p>这是一个使用Vue3、TypeScript和Element Plus构建的现代化博客系统。</p>
             <p>您可以在这里分享您的想法、技术文章和生活感悟。</p>
             <div class="actions mt-lg">
-              <el-button type="primary" size="large">开始写作</el-button>
+              <el-button
+                type="primary"
+                size="large"
+                >开始写作</el-button
+              >
               <el-button size="large">浏览文章</el-button>
             </div>
           </div>
@@ -24,20 +31,44 @@
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="mt-lg">
+    <el-row
+      :gutter="20"
+      class="mt-lg"
+    >
       <el-col :span="24">
         <h3 class="section-title">最新文章</h3>
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="mt-md">
-      <el-col :xs="24" :sm="12" :md="8" v-for="i in 3" :key="i" class="mb-md">
-        <el-card shadow="hover" class="article-card">
+    <el-row
+      :gutter="20"
+      class="mt-md"
+    >
+      <el-col
+        :xs="24"
+        :sm="12"
+        :md="8"
+        v-for="i in 3"
+        :key="i"
+        class="mb-md"
+      >
+        <el-card
+          shadow="hover"
+          class="article-card"
+        >
           <div class="article-cover">
-            <el-image src="https://via.placeholder.com/800x450" fit="cover" alt="文章封面" />
+            <el-image
+              src="https://via.placeholder.com/800x450"
+              fit="cover"
+              alt="文章封面"
+            />
           </div>
           <div class="article-meta">
-            <el-tag size="small" type="info">技术</el-tag>
+            <el-tag
+              size="small"
+              type="info"
+              >技术</el-tag
+            >
             <span class="date">{{ new Date().toLocaleDateString() }}</span>
           </div>
           <h4 class="article-title">示例文章标题 {{ i }}</h4>

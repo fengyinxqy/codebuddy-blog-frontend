@@ -31,7 +31,11 @@ const statistics = ref([
       <el-col :span="24">
         <div class="profile-header">
           <div class="profile-avatar">
-            <el-avatar :size="120" src="https://via.placeholder.com/120" alt="作者头像" />
+            <el-avatar
+              :size="120"
+              src="https://via.placeholder.com/120"
+              alt="作者头像"
+            />
           </div>
           <h1 class="profile-name">博主昵称</h1>
           <p class="profile-bio">前端开发工程师 / 技术博主 / 开源爱好者</p>
@@ -44,16 +48,26 @@ const statistics = ref([
               rel="noopener noreferrer"
               class="social-link"
             >
-              <el-button type="info" :icon="link.icon" circle />
+              <el-button
+                type="info"
+                :icon="link.icon"
+                circle
+              />
             </a>
           </div>
         </div>
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="mt-xl">
+    <el-row
+      :gutter="20"
+      class="mt-xl"
+    >
       <el-col :md="16">
-        <el-card shadow="hover" class="about-card">
+        <el-card
+          shadow="hover"
+          class="about-card"
+        >
           <template #header>
             <div class="card-header">
               <h2>关于我</h2>
@@ -70,7 +84,11 @@ const statistics = ref([
 
             <h3 class="section-title mt-lg">技能特长</h3>
             <div class="skills-list">
-              <div v-for="skill in skills" :key="skill.name" class="skill-item">
+              <div
+                v-for="skill in skills"
+                :key="skill.name"
+                class="skill-item"
+              >
                 <div class="skill-header">
                   <span class="skill-name">{{ skill.name }}</span>
                   <span class="skill-level">{{ skill.level }}%</span>
@@ -88,14 +106,21 @@ const statistics = ref([
       </el-col>
 
       <el-col :md="8">
-        <el-card shadow="hover" class="statistics-card">
+        <el-card
+          shadow="hover"
+          class="statistics-card"
+        >
           <template #header>
             <div class="card-header">
               <h2>统计数据</h2>
             </div>
           </template>
           <div class="statistics-grid">
-            <div v-for="stat in statistics" :key="stat.label" class="stat-item">
+            <div
+              v-for="stat in statistics"
+              :key="stat.label"
+              class="stat-item"
+            >
               <el-icon :size="24"><component :is="stat.icon" /></el-icon>
               <div class="stat-info">
                 <div class="stat-value">{{ stat.value }}</div>
@@ -105,7 +130,10 @@ const statistics = ref([
           </div>
         </el-card>
 
-        <el-card shadow="hover" class="contact-card mt-lg">
+        <el-card
+          shadow="hover"
+          class="contact-card mt-lg"
+        >
           <template #header>
             <div class="card-header">
               <h2>联系我</h2>

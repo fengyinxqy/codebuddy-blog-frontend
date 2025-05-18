@@ -61,9 +61,11 @@ const cancelEdit = () => {
     confirmButtonText: '确定',
     cancelButtonText: '取消',
     type: 'warning',
-  }).then(() => {
+  })
+    .then(() => {
       router.go(-1)
-    }).catch(() => {})
+    })
+    .catch(() => {})
 }
 
 // 模拟加载文章数据
@@ -81,11 +83,24 @@ if (isEditMode) {
 
 <template>
   <div class="article-edit-view">
-    <el-page-header :content="isEditMode ? '编辑文章' : '创建文章'" @back="cancelEdit" />
+    <el-page-header
+      :content="isEditMode ? '编辑文章' : '创建文章'"
+      @back="cancelEdit"
+    />
 
-    <el-form :model="form" label-width="80px" class="mt-lg">
-      <el-form-item label="文章标题" required>
-        <el-input v-model="form.title" placeholder="请输入文章标题" />
+    <el-form
+      :model="form"
+      label-width="80px"
+      class="mt-lg"
+    >
+      <el-form-item
+        label="文章标题"
+        required
+      >
+        <el-input
+          v-model="form.title"
+          placeholder="请输入文章标题"
+        />
       </el-form-item>
 
       <el-form-item label="文章封面">
@@ -96,16 +111,28 @@ if (isEditMode) {
           :auto-upload="false"
           :on-change="(file) => (form.cover = URL.createObjectURL(file.raw))"
         >
-          <img v-if="form.cover"
-              :src="form.cover"
-              class="cover-image"
-              alt="文章封面" />
-          <el-icon v-else class="cover-uploader-icon"><Plus /></el-icon>
+          <img
+            v-if="form.cover"
+            :src="form.cover"
+            class="cover-image"
+            alt="文章封面"
+          />
+          <el-icon
+            v-else
+            class="cover-uploader-icon"
+            ><Plus
+          /></el-icon>
         </el-upload>
       </el-form-item>
 
-      <el-form-item label="文章分类" required>
-        <el-select v-model="form.category" placeholder="请选择分类">
+      <el-form-item
+        label="文章分类"
+        required
+      >
+        <el-select
+          v-model="form.category"
+          placeholder="请选择分类"
+        >
           <el-option
             v-for="item in categories"
             :key="item.value"
@@ -133,12 +160,21 @@ if (isEditMode) {
         </el-select>
       </el-form-item>
 
-      <el-form-item label="文章内容" required>
-        <WangEditor v-model="form.content" height="500px" />
+      <el-form-item
+        label="文章内容"
+        required
+      >
+        <WangEditor
+          v-model="form.content"
+          height="500px"
+        />
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="saveArticle">
+        <el-button
+          type="primary"
+          @click="saveArticle"
+        >
           {{ isEditMode ? '更新文章' : '发布文章' }}
         </el-button>
         <el-button @click="cancelEdit">取消</el-button>

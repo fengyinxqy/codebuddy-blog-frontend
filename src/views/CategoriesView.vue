@@ -95,7 +95,10 @@ const categories = ref([
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="mt-lg">
+    <el-row
+      :gutter="20"
+      class="mt-lg"
+    >
       <el-col
         :xs="24"
         :sm="12"
@@ -110,11 +113,19 @@ const categories = ref([
           :body-style="{ borderTop: `3px solid ${category.color}` }"
         >
           <div class="category-header">
-            <el-icon :size="24" :color="category.color">
+            <el-icon
+              :size="24"
+              :color="category.color"
+            >
               <component :is="category.icon" />
             </el-icon>
             <h3 class="category-name">{{ category.name }}</h3>
-            <el-tag size="small" type="info" round>{{ category.count }} 篇</el-tag>
+            <el-tag
+              size="small"
+              type="info"
+              round
+              >{{ category.count }} 篇</el-tag
+            >
           </div>
 
           <p class="category-description">{{ category.description }}</p>
@@ -133,14 +144,21 @@ const categories = ref([
 
           <div class="category-footer">
             <router-link :to="`/categories/${category.id}`">
-              <el-button type="primary" text>查看全部文章</el-button>
+              <el-button
+                type="primary"
+                text
+                >查看全部文章</el-button
+              >
             </router-link>
           </div>
         </el-card>
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="mt-xl">
+    <el-row
+      :gutter="20"
+      class="mt-xl"
+    >
       <el-col :span="24">
         <el-card shadow="hover">
           <template #header>

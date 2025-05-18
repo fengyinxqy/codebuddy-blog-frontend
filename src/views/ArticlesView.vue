@@ -12,12 +12,29 @@
               :prefix-icon="Search"
               clearable
             />
-            <el-select v-model="sortBy" placeholder="排序方式" class="sort-select">
-              <el-option label="最新发布" value="newest" />
-              <el-option label="最多阅读" value="most-read" />
-              <el-option label="最多点赞" value="most-liked" />
+            <el-select
+              v-model="sortBy"
+              placeholder="排序方式"
+              class="sort-select"
+            >
+              <el-option
+                label="最新发布"
+                value="newest"
+              />
+              <el-option
+                label="最多阅读"
+                value="most-read"
+              />
+              <el-option
+                label="最多点赞"
+                value="most-liked"
+              />
             </el-select>
-            <el-button type="primary" :icon="Plus" @click="$router.push('/article/edit')">
+            <el-button
+              type="primary"
+              :icon="Plus"
+              @click="$router.push('/article/edit')"
+            >
               写文章
             </el-button>
           </div>
@@ -25,17 +42,33 @@
       </el-col>
     </el-row>
 
-    <el-row :gutter="20" class="mt-lg">
+    <el-row
+      :gutter="20"
+      class="mt-lg"
+    >
       <el-col :md="18">
         <div class="article-list">
-          <el-card v-for="i in 5" :key="i" class="article-item" shadow="hover">
+          <el-card
+            v-for="i in 5"
+            :key="i"
+            class="article-item"
+            shadow="hover"
+          >
             <div class="article-layout">
               <div class="article-image">
-                <el-image src="https://via.placeholder.com/300x200" fit="cover" alt="文章封面" />
+                <el-image
+                  src="https://via.placeholder.com/300x200"
+                  fit="cover"
+                  alt="文章封面"
+                />
               </div>
               <div class="article-content">
                 <div class="article-meta">
-                  <el-tag size="small" type="info">技术</el-tag>
+                  <el-tag
+                    size="small"
+                    type="info"
+                    >技术</el-tag
+                  >
                   <span class="date">{{ new Date().toLocaleDateString() }}</span>
                 </div>
                 <h3 class="article-title">
@@ -47,7 +80,10 @@
                 </p>
                 <div class="article-footer">
                   <div class="article-author">
-                    <el-avatar size="small" src="https://via.placeholder.com/40" />
+                    <el-avatar
+                      size="small"
+                      src="https://via.placeholder.com/40"
+                    />
                     <span>作者名称</span>
                   </div>
                   <div class="article-stats">
@@ -67,65 +103,125 @@
           </el-card>
 
           <div class="pagination-container">
-            <el-pagination background layout="prev, pager, next" :total="50" :page-size="10" />
+            <el-pagination
+              background
+              layout="prev, pager, next"
+              :total="50"
+              :page-size="10"
+            />
           </div>
         </div>
       </el-col>
 
       <el-col :md="6">
         <div class="sidebar">
-          <el-card class="sidebar-card" shadow="hover">
+          <el-card
+            class="sidebar-card"
+            shadow="hover"
+          >
             <template #header>
               <div class="card-header">
                 <h3>热门分类</h3>
               </div>
             </template>
             <div class="category-list">
-              <router-link to="/categories/tech" class="category-item">
+              <router-link
+                to="/categories/tech"
+                class="category-item"
+              >
                 <span class="category-name">技术</span>
-                <el-tag size="small" type="info">25</el-tag>
+                <el-tag
+                  size="small"
+                  type="info"
+                  >25</el-tag
+                >
               </router-link>
-              <router-link to="/categories/design" class="category-item">
+              <router-link
+                to="/categories/design"
+                class="category-item"
+              >
                 <span class="category-name">设计</span>
-                <el-tag size="small" type="info">18</el-tag>
+                <el-tag
+                  size="small"
+                  type="info"
+                  >18</el-tag
+                >
               </router-link>
-              <router-link to="/categories/life" class="category-item">
+              <router-link
+                to="/categories/life"
+                class="category-item"
+              >
                 <span class="category-name">生活</span>
-                <el-tag size="small" type="info">12</el-tag>
+                <el-tag
+                  size="small"
+                  type="info"
+                  >12</el-tag
+                >
               </router-link>
-              <router-link to="/categories/travel" class="category-item">
+              <router-link
+                to="/categories/travel"
+                class="category-item"
+              >
                 <span class="category-name">旅行</span>
-                <el-tag size="small" type="info">8</el-tag>
+                <el-tag
+                  size="small"
+                  type="info"
+                  >8</el-tag
+                >
               </router-link>
             </div>
           </el-card>
 
-          <el-card class="sidebar-card mt-md" shadow="hover">
+          <el-card
+            class="sidebar-card mt-md"
+            shadow="hover"
+          >
             <template #header>
               <div class="card-header">
                 <h3>热门标签</h3>
               </div>
             </template>
             <div class="tag-cloud">
-              <router-link to="/tags/vue" class="tag-item">
+              <router-link
+                to="/tags/vue"
+                class="tag-item"
+              >
                 <el-tag>Vue.js</el-tag>
               </router-link>
-              <router-link to="/tags/typescript" class="tag-item">
+              <router-link
+                to="/tags/typescript"
+                class="tag-item"
+              >
                 <el-tag>TypeScript</el-tag>
               </router-link>
-              <router-link to="/tags/javascript" class="tag-item">
+              <router-link
+                to="/tags/javascript"
+                class="tag-item"
+              >
                 <el-tag>JavaScript</el-tag>
               </router-link>
-              <router-link to="/tags/css" class="tag-item">
+              <router-link
+                to="/tags/css"
+                class="tag-item"
+              >
                 <el-tag>CSS</el-tag>
               </router-link>
-              <router-link to="/tags/html" class="tag-item">
+              <router-link
+                to="/tags/html"
+                class="tag-item"
+              >
                 <el-tag>HTML</el-tag>
               </router-link>
-              <router-link to="/tags/vite" class="tag-item">
+              <router-link
+                to="/tags/vite"
+                class="tag-item"
+              >
                 <el-tag>Vite</el-tag>
               </router-link>
-              <router-link to="/tags/element-plus" class="tag-item">
+              <router-link
+                to="/tags/element-plus"
+                class="tag-item"
+              >
                 <el-tag>Element Plus</el-tag>
               </router-link>
             </div>
@@ -137,8 +233,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { Search, View, Star, ChatDotRound } from '@element-plus/icons-vue'
+import { ref } from 'vue'
 
 const searchQuery = ref('')
 const sortBy = ref('newest')
