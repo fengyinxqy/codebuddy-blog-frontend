@@ -10,7 +10,12 @@ import { RouterView } from 'vue-router'
           <div class="logo">
             <router-link to="/">Blog</router-link>
           </div>
-          <el-menu mode="horizontal" :ellipsis="false" router>
+          <el-menu
+            :default-active="$route.path"
+            mode="horizontal"
+            :ellipsis="false"
+            router
+          >
             <el-menu-item index="/">首页</el-menu-item>
             <el-menu-item index="/articles">文章</el-menu-item>
             <el-menu-item index="/categories">分类</el-menu-item>
