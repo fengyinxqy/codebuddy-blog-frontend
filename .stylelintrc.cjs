@@ -30,6 +30,8 @@ module.exports = {
           'screen',
           'function',
           'if',
+          'else',
+          'warn',
           'each',
           'include',
           'mixin',

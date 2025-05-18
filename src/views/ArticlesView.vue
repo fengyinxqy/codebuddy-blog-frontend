@@ -32,7 +32,6 @@
             </el-select>
             <el-button
               type="primary"
-              :icon="Plus"
               @click="$router.push('/article/edit')"
             >
               写文章
