@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
+import { authGuard } from './auth-guard'
+
 import DefaultLayout from '@/layouts/DefaultLayout.vue'
 import HomeView from '@/views/HomeView.vue'
 
@@ -64,6 +66,25 @@ const router = createRouter({
           component: () => import('@/views/ArticleEditView.vue'),
           meta: {
             title: '编辑文章',
+            requiresAuth: true,
+          },
+        },
+        {
+          path: 'login',
+          name: 'login',
+          component: () => import('@/views/AuthView.vue'),
+          meta: {
+            title: '登录',
+            guestOnly: true,
+          },
+        },
+        {
+          path: 'profile',
+          name: 'profile',
+          component: () => import('@/views/ProfileView.vue'),
+          meta: {
+            title: '个人资料',
+            requiresAuth: true,
           },
         },
       ],
@@ -72,10 +93,6 @@ const router = createRouter({
 })
 
 // 全局前置守卫
-router.beforeEach((to, _from, next) => {
-  // 设置页面标题
-  document.title = `${to.meta.title ? `${to.meta.title} - ` : ''}Blog`
-  next()
-})
+router.beforeEach(authGuard)
 
 export default router

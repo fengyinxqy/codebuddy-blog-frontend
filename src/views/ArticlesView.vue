@@ -72,7 +72,7 @@
                   <span class="date">{{ new Date().toLocaleDateString() }}</span>
                 </div>
                 <h3 class="article-title">
-                  <router-link>这是一篇示例文章标题 {{ i }}</router-link>
+                  <router-link :to="'/article/1'">这是一篇示例文章标题 {{ i }}</router-link>
                 </h3>
                 <p class="article-excerpt text-ellipsis-3">
                   这是一篇示例文章的摘要内容，展示了文章的主要内容和观点。这是一篇示例文章的摘要内容，展示了文章的主要内容和观点。

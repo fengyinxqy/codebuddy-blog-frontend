@@ -169,6 +169,16 @@ onMounted(() => {
               >
             </div>
           </div>
+
+          <!-- 评论区域 -->
+          <div class="comments-section">
+            <h3 class="section-title">评论 ({{ article.comments }})</h3>
+            <CommentForm :articleId="article.id" />
+            <CommentList
+              :articleId="article.id"
+              class="mt-6"
+            />
+          </div>
         </el-card>
       </el-col>
 
@@ -181,54 +191,77 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .article-detail-view {
-  padding: $spacing-base 0;
+  padding: 24px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .article-header {
-  border-bottom: 1px solid $border-color-light;
-  margin-bottom: $spacing-large;
-  padding-bottom: $spacing-base;
+  border-bottom: 1px solid var(--el-border-color-light);
+  margin-bottom: 32px;
+  padding-bottom: 16px;
 
   .article-title {
-    font-size: 2rem;
-    margin: 0 0 $spacing-base;
+    font-size: 2.2rem;
+    margin: 0 0 16px;
+    line-height: 1.3;
+    color: var(--el-text-color-primary);
+    font-weight: 600;
   }
 
   .article-meta {
-    @include flex(row, space-between, center);
-    color: $text-secondary;
-    font-size: $font-size-small;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--el-text-color-secondary);
+    font-size: 14px;
 
     .meta-left {
-      @include flex(row, flex-start, center);
-      gap: $spacing-large;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 24px;
 
       .author-info {
-        @include flex(row, flex-start, center);
-        gap: $spacing-small;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
 
         .author-name {
           font-weight: 500;
+          color: var(--el-text-color-primary);
         }
       }
 
       .publish-info {
-        @include flex(row, flex-start, center);
-        gap: $spacing-small;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+
+        .el-icon {
+          font-size: 16px;
+        }
 
         .update-date {
-          color: $text-secondary;
-          font-size: $font-size-extra-small;
+          color: var(--el-text-color-secondary);
+          font-size: 12px;
         }
       }
     }
 
     .meta-right {
-      @include flex(row, flex-end, center);
-      gap: $spacing-base;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
 
       .views {
-        @include flex(row, flex-start, center);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
         gap: 4px;
       }
     }
@@ -236,56 +269,176 @@ onMounted(() => {
 }
 
 .article-card {
+  border-radius: 12px;
+  box-shadow: var(--el-box-shadow-light);
+  transition: all 0.3s ease;
+
+  &:hover {
+    box-shadow: var(--el-box-shadow);
+  }
+
   .article-cover {
-    border-radius: $border-radius-base;
-    margin-bottom: $spacing-large;
+    border-radius: 8px;
+    margin-bottom: 32px;
     overflow: hidden;
+    box-shadow: var(--el-box-shadow-light);
 
     .el-image {
       width: 100%;
+      display: block;
     }
   }
 
   .article-content {
-    color: $text-primary;
-    font-size: $font-size-medium;
+    color: var(--el-text-color-primary);
+    font-size: 16px;
     line-height: 1.8;
-    margin-bottom: $spacing-large;
+    margin-bottom: 32px;
+
+    :deep(pre) {
+      background-color: #f6f8fa;
+      border-radius: 6px;
+      padding: 16px;
+      overflow-x: auto;
+    }
+
+    :deep(code) {
+      font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+      font-size: 14px;
+    }
+
+    :deep(img) {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
   }
 
   .article-tags {
-    @include flex(row, flex-start, center);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     flex-wrap: wrap;
-    gap: $spacing-small;
-    margin-bottom: $spacing-large;
+    gap: 8px;
+    margin-bottom: 32px;
+
+    .tag-item {
+      transition: all 0.2s ease;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--el-box-shadow-light);
+      }
+    }
   }
 
   .article-actions {
-    @include flex(row, center, center);
-    border-bottom: 1px solid $border-color-light;
-    border-top: 1px solid $border-color-light;
-    gap: $spacing-large;
-    margin-bottom: $spacing-large;
-    padding: $spacing-base 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--el-border-color-light);
+    border-top: 1px solid var(--el-border-color-light);
+    gap: 24px;
+    margin-bottom: 32px;
+    padding: 16px 0;
+
+    .el-button {
+      padding: 12px 24px;
+    }
   }
 
   .article-author-card {
-    @include flex(row, flex-start, center);
-    background-color: $background-color-light;
-    border-radius: $border-radius-base;
-    gap: $spacing-large;
-    padding: $spacing-large;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--el-bg-color-page);
+    border-radius: 12px;
+    gap: 24px;
+    padding: 24px;
+    margin-bottom: 32px;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: var(--el-box-shadow-light);
+    }
 
     .author-info {
       .author-name {
-        font-size: $font-size-large;
-        margin: 0 0 $spacing-small;
+        font-size: 18px;
+        margin: 0 0 8px;
+        font-weight: 600;
       }
 
       .author-bio {
-        color: $text-secondary;
-        margin: 0 0 $spacing-base;
+        color: var(--el-text-color-secondary);
+        margin: 0 0 16px;
+        font-size: 14px;
       }
+
+      .el-button {
+        padding: 8px 16px;
+      }
+    }
+  }
+
+  .comments-section {
+    margin-top: 40px;
+
+    .section-title {
+      font-size: 20px;
+      margin-bottom: 24px;
+      font-weight: 600;
+      color: var(--el-text-color-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .el-icon {
+        color: var(--el-color-primary);
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .article-detail-view {
+    padding: 16px;
+  }
+
+  .article-header {
+    .article-title {
+      font-size: 1.8rem;
+    }
+
+    .article-meta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+
+      .meta-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .meta-right {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 12px;
+      }
+    }
+  }
+
+  .article-card {
+    .article-actions {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .article-author-card {
+      flex-direction: column;
+      text-align: center;
     }
   }
 }
